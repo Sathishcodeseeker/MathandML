@@ -1,229 +1,206 @@
-1. Linear Algebra (Most Critical)
+# Mathematics for Machine Learning
 
-What to learn:
-├── Vector representation         → Data points are vectors
-├── Vector addition/subtraction   → Feature operations
-├── Dot product                   → Similarity, projections
-├── Magnitude (norm)              → Distance calculations
-├── Unit vectors                  → Normalization
-└── Vector spaces                 → Understanding feature spaces
+---
 
+# 1. Linear Algebra (Most Critical)
 
-Concept                          Algorithm
-Dot product                      Logistic Regression, SVM, Word2Vec
-Norms (L1, L2)                   Regularization, K-Means, DBSCAN
-Cosine similarity                NLP, Transformers, Embeddings
-Vector spaces                    PCA, t-SNE, UMAP
+## 1.1 Vectors
 
-Matrices:
+### What to Learn
+- Vector representation → Data points are vectors  
+- Vector addition/subtraction → Feature operations  
+- Dot product → Similarity, projections  
+- Magnitude (norm) → Distance calculations  
+- Unit vectors → Normalization  
+- Vector spaces → Understanding feature spaces  
 
-What to learn:
-├── Matrix representation          → Datasets are matrices
-├── Matrix multiplication          → Layer computations in neural nets
-├── Transpose                      → Data reshaping
-├── Inverse                        → Solving linear systems
-├── Determinant                    → Matrix properties
-├── Identity matrix                → Baseline transformations
-├── Eigenvalues & Eigenvectors     → PCA, spectral methods
-├── Matrix decomposition (SVD)     → PCA, recommendations
-├── Rank                           → Feature independence
-└── Positive definite matrices     → Covariance, GMM
+### Concepts → Algorithms
 
-Concept                                Algorithm
-Matrix multiplication                  Neural Networks, CNNs, Transformers
-Eigendecomposition                     PCA
-SVD                                    PCA, Dimensionality Reduction
-Covariance matrix                      GMM, PCA
-Matrix inverse                         Linear Regression (Normal Equation)
+| Concept | Used In |
+|---------|---------|
+| Dot product | Logistic Regression, SVM, Word2Vec |
+| Norms (L1, L2) | Regularization, K-Means, DBSCAN |
+| Cosine similarity | NLP, Transformers, Embeddings |
+| Vector spaces | PCA, t-SNE, UMAP |
 
-LINEAR REGRESSION:     Matrices, Inverse, Transpose
-LOGISTIC REGRESSION:   Vectors, Dot product, Matrix mult
-RANDOM FOREST:         Minimal linear algebra
-GRADIENT BOOSTING:     Minimal linear algebra
-SVM:                   Dot product, Kernel trick, Norms
-PCA:                   Eigenvalues, Eigenvectors, SVD, Covariance
-CNNs:                  Matrix/Tensor operations, Convolutions
-TRANSFORMERS:          Matrix multiplication (Attention = QKᵀ)
-K-MEANS:              Norms, Distance metrics
-GMM:                   Covariance matrices, Eigendecomposition
-t-SNE / UMAP:         Distance matrices, Norms
+---
 
-2. Calculus
-   
-Why: How models LEARN (optimization)
+## 1.2 Matrices
 
-2.1 Differential Calculus (Derivatives)
+### What to Learn
+- Matrix representation → Datasets are matrices  
+- Matrix multiplication → Neural network layer computation  
+- Transpose → Data reshaping  
+- Inverse → Solving linear systems  
+- Determinant → Matrix properties  
+- Identity matrix → Baseline transformation  
+- Eigenvalues & Eigenvectors → PCA, spectral methods  
+- Matrix decomposition (SVD) → PCA, recommender systems  
+- Rank → Feature independence  
+- Positive definite matrices → Covariance, GMM  
 
-What to learn:
-├── Derivatives                    → Rate of change
-│   ├── Power rule                 → d/dx(xⁿ) = nxⁿ⁻¹
-│   ├── Chain rule                 → d/dx[f(g(x))] = f'(g(x))·g'(x)
-│   ├── Product rule               → d/dx[f·g] = f'g + fg'
-│   └── Quotient rule              → Less common in ML
-│
-├── Partial derivatives            → Derivatives with multiple variables
-│   └── ∂f/∂x₁, ∂f/∂x₂, ...     → How loss changes per parameter
-│
-├── Gradient                       → Vector of all partial derivatives
-│   └── ∇f = [∂f/∂x₁, ∂f/∂x₂]  → Direction of steepest ascent
-│
-├── Jacobian matrix                → Matrix of first-order partials
-│   └── Used in backpropagation
-│
-└── Hessian matrix                 → Matrix of second-order partials
-    └── Used in optimization (Newton's method)
+### Concepts → Algorithms
 
-Example — Gradient Descent:
-Example
-Loss function: L(w) = (1/n) Σ(yᵢ - (wxᵢ + b))²
+| Concept | Used In |
+|---------|---------|
+| Matrix multiplication | Neural Networks, CNNs, Transformers |
+| Eigendecomposition | PCA |
+| SVD | Dimensionality reduction |
+| Covariance matrix | GMM, PCA |
+| Matrix inverse | Linear Regression (Normal Equation) |
 
-Gradient:
-∂L/∂w = -(2/n) Σ xᵢ(yᵢ - (wxᵢ + b))
-∂L/∂b = -(2/n) Σ (yᵢ - (wxᵢ + b))
+---
 
-Update rule:
-w_new = w_old - learning_rate × ∂L/∂w
-b_new = b_old - learning_rate × ∂L/∂b
+## 1.3 Algorithms vs Linear Algebra
 
-# This is how EVERY neural network learns!
+- **Linear Regression** → Matrices, inverse, transpose  
+- **Logistic Regression** → Vectors, dot product, matrix multiplication  
+- **Random Forest / Gradient Boosting** → Minimal linear algebra  
+- **SVM** → Dot product, kernels, norms  
+- **PCA** → Eigenvalues, eigenvectors, SVD, covariance  
+- **CNNs / Transformers** → Matrix & tensor operations  
+- **K-Means** → Norms, distance metrics  
+- **GMM** → Covariance matrices, eigendecomposition  
+- **t-SNE / UMAP** → Distance matrices  
 
-2.2 Chain Rule (CRITICAL for Deep Learning)
-Example
-Backpropagation = Repeated application of chain rule
+---
 
-Neural Network:
-Input → Layer1 → Layer2 → Layer3 → Output → Loss
+# 2. Calculus (How Models Learn)
 
-∂Loss/∂w₁ = ∂Loss/∂out × ∂out/∂L3 × ∂L3/∂L2 × ∂L2/∂L1 × ∂L1/∂w₁
-              ─────────────────────────────────────────────────────────
-                            Chain rule applied repeatedly
+## 2.1 Differential Calculus
 
-Concept                             Algorithm
-Derivatives                         ALL learning algorithms
-Chain rule                          Neural Networks, CNNs, Transformers
-Gradient                            Gradient Descent, Backpropagation
-Partial derivatives                 Multi-parameter optimization
+### What to Learn
+- Derivatives → Rate of change  
+  - Power rule: `d/dx (xⁿ) = n xⁿ⁻¹`  
+  - Chain rule  
+  - Product rule  
+- Partial derivatives → Multi-variable change  
+- Gradient → Direction of steepest ascent  
+- Jacobian → First-order partial matrix (backpropagation)  
+- Hessian → Second-order partial matrix (Newton methods)  
 
+### Gradient Descent Example
 
-3. Probability & Statistics
-Why: Understanding data, uncertainty, and model evaluation
-3.1 Probability Basics
+**Loss function**
 
-What to learn:
-├── Probability rules
-│   ├── P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
-│   ├── P(A ∩ B) = P(A) × P(B|A)
-│   └── Conditional probability P(A|B)
-│
-├── Bayes' Theorem                    ← VERY IMPORTANT
-│   └── P(A|B) = P(B|A) × P(A) / P(B)
-│
-├── Independence
-│   └── P(A ∩ B) = P(A) × P(B)
-│
-└── Random variables
-    ├── Discrete (classification)
-    └── Continuous (regression)
+```
+L(w) = (1/n) Σ (yᵢ − (w xᵢ + b))²
+```
 
-3.2 Distributions
+**Gradients**
 
-What to learn:
-├── Normal (Gaussian) distribution    → Most common assumption
-│   └── f(x) = (1/√(2πσ²)) × e^(-(x-μ)²/2σ²)
-│
-├── Bernoulli distribution            → Binary classification
-├── Binomial distribution             → Multiple binary trials
-├── Poisson distribution              → Count data
-├── Uniform distribution              → Random initialization
-├── Multinomial distribution          → Multi-class classification
-│
-└── Multivariate Gaussian             → GMM, PCA
-    └── f(x) = ... involves covariance matrix Σ
+```
+∂L/∂w = -(2/n) Σ xᵢ (yᵢ − (w xᵢ + b))
+∂L/∂b = -(2/n) Σ (yᵢ − (w xᵢ + b))
+```
 
+**Update rule**
 
-3.3 Statistics
+```
+w_new = w_old − η ∂L/∂w
+b_new = b_old − η ∂L/∂b
+```
 
-What to learn:
-├── Descriptive Statistics
-│   ├── Mean, Median, Mode
-│   ├── Variance, Standard Deviation
-│   ├── Covariance & Correlation
-│   └── Percentiles, IQR
-│
-├── Inferential Statistics
-│   ├── Hypothesis testing           → A/B testing
-│   ├── p-values                     → Feature significance
-│   ├── Confidence intervals         → Model uncertainty
-│   └── t-test, chi-square test      → Feature selection
-│
-├── Maximum Likelihood Estimation (MLE)  ← CRITICAL
-│   └── Find parameters that maximize P(data|params)
-│   └── Used in: Logistic Regression, GMM, Neural Networks
-│
-├── Maximum A Posteriori (MAP)
-│   └── MLE + prior (Bayesian approach)
-│   └── Used in: Regularization
-│
-└── Information Theory
-    ├── Entropy: H = -Σ p(x) log p(x)       → Decision Trees
-    ├── Cross-entropy                         → Loss function for classification
-    ├── KL Divergence                         → Autoencoders (VAE)
-    └── Information Gain                      → Random Forests, Gradient Boosting
+---
 
+## 2.2 Chain Rule (Critical for Deep Learning)
 
-Example — Cross-Entropy Loss:
+Backpropagation is repeated application of the chain rule:
 
-Binary Cross-Entropy (Logistic Regression, Neural Nets):
+```
+∂Loss/∂w₁ =
+∂Loss/∂out × ∂out/∂L3 × ∂L3/∂L2 × ∂L2/∂L1 × ∂L1/∂w₁
+```
 
-L = -(1/n) Σ [yᵢ log(ŷᵢ) + (1-yᵢ) log(1-ŷᵢ)]
+### Concepts → Algorithms
 
-Where:
-  yᵢ  = actual label (0 or 1)
-  ŷᵢ  = predicted probability
+| Concept | Used In |
+|---------|---------|
+| Derivatives | All learning algorithms |
+| Chain rule | Neural Networks, CNNs, Transformers |
+| Gradient | Gradient descent, backpropagation |
+| Partial derivatives | Multi-parameter optimization |
 
-4. Optimization
-Why: How models find the best parameters
+---
 
-What to learn:
-├── Gradient Descent                      ← MOST IMPORTANT
-│   ├── Batch Gradient Descent
-│   ├── Stochastic Gradient Descent (SGD)
-│   ├── Mini-batch Gradient Descent
-│   └── Learning rate concept
-│
-├── Advanced Optimizers
-│   ├── Adam                              → Default for deep learning
-│   ├── RMSprop
-│   ├── AdaGrad
-│   └── Momentum
-│
-├── Convex vs Non-convex optimization
-│   ├── Linear/Logistic Regression → Convex (global minimum)
-│   └── Neural Networks → Non-convex (local minima)
-│
-├── Regularization (Preventing overfitting)
-│   ├── L1 (Lasso): adds |w| penalty     → Sparse features
-│   ├── L2 (Ridge): adds w² penalty      → Small weights
-│   └── Elastic Net: L1 + L2 combined
-│
-├── Constrained optimization
-│   ├── Lagrange multipliers              → SVM
-│   └── KKT conditions                    → SVM
-│
-└── Loss Functions
-    ├── MSE (Mean Squared Error)          → Regression
-    ├── Cross-Entropy                     → Classification
-    ├── Hinge Loss                        → SVM
-    └── Huber Loss                        → Robust regression
+# 3. Probability & Statistics
 
-Attention Mechanism Math (For Transformers
+## 3.1 Probability Basics
 
-Attention(Q, K, V) = softmax(QKᵀ / √dₖ) × V
+### What to Learn
+- Probability rules  
+- Conditional probability  
+- Independence  
+- Bayes’ theorem  
+- Random variables (discrete & continuous)  
+
+---
+
+## 3.2 Distributions
+
+- Normal (Gaussian)  
+- Bernoulli  
+- Binomial  
+- Poisson  
+- Uniform  
+- Multinomial  
+- Multivariate Gaussian  
+
+---
+
+## 3.3 Statistics
+
+### Descriptive
+- Mean, median, mode  
+- Variance, standard deviation  
+- Covariance, correlation  
+- Percentiles, IQR  
+
+### Inferential
+- Hypothesis testing  
+- p-values  
+- Confidence intervals  
+- t-test, chi-square  
+
+### Estimation & Information Theory
+- **MLE** → Logistic Regression, GMM, Neural Nets  
+- **MAP** → Bayesian regularization  
+- **Entropy / Cross-Entropy / KL Divergence / Information Gain**
+
+### Binary Cross-Entropy
+
+```
+L = -(1/n) Σ [ yᵢ log(ŷᵢ) + (1 − yᵢ) log(1 − ŷᵢ) ]
+```
+
+---
+
+# 4. Optimization
+
+## Core Concepts
+- Gradient Descent (Batch, SGD, Mini-batch)  
+- Learning rate  
+- Adam, RMSProp, AdaGrad, Momentum  
+- Convex vs Non-convex optimization  
+- Regularization (L1, L2, Elastic Net)  
+- Constrained optimization (Lagrange, KKT)  
+- Loss functions (MSE, Cross-Entropy, Hinge, Huber)  
+
+---
+
+# 5. Attention Mechanism (Transformers)
+
+```
+Attention(Q, K, V) = softmax(QKᵀ / √dₖ) V
+```
 
 Where:
-  Q = Query matrix    (What am I looking for?)
-  K = Key matrix      (What do I contain?)
-  V = Value matrix    (What do I output?)
-  dₖ = dimension      (Scaling factor)
 
-This is ALL matrix multiplication + softmax!
+- **Q** → Query matrix  
+- **K** → Key matrix  
+- **V** → Value matrix  
+- **dₖ** → Key dimension (scaling factor)  
+
+➡ Entire transformer math = **matrix multiplication + softmax**
+
+---
