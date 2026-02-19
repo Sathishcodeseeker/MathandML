@@ -295,4 +295,4 @@ Here's the ordered list:
 17. Ranking & Order Statistics
 18. Concordance & Mann-Whitney U
 
-19. ---
+---
