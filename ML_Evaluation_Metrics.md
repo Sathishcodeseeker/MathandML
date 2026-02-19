@@ -274,4 +274,25 @@ shap.summary_plot(shap_values, X_test)
 
 ---
 
-*Generated for ML evaluation reference · February 2026*
+Here's the ordered list:
+
+1. Mean, Median, Variance, Standard Deviation
+2. Probability Theory & Conditional Probability
+3. Bayes' Theorem
+4. Probability Distributions (Bernoulli, Gaussian, Chi-squared, F-distribution)
+5. Dot Products & Vector Spaces
+6. Distance Metrics (Euclidean, Cosine, Manhattan)
+7. Eigenvalues & Eigenvectors
+8. Entropy & Information Theory
+9. KL Divergence & Cross-Entropy
+10. Probability Density Functions (PDF)
+11. Kernel Density Estimation
+12. Hypothesis Testing & p-values
+13. Confidence Intervals
+14. Bias-Variance Tradeoff
+15. Sensitivity & Specificity
+16. Threshold-based Decision Making
+17. Ranking & Order Statistics
+18. Concordance & Mann-Whitney U
+
+19. ---
